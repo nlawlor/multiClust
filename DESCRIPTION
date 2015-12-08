@@ -1,34 +1,56 @@
 Package: multiClust
 Type: Package
 Title: A collection of gene feature selection and clustering analysis algorithms
-Version: 0.99.2
-Date: 2015-11-16
-Authors@R: c( person("Nathan","Lawlor", email = "nathan.lawlor03@gmail.com", role = c("aut", "cre")), person("Peiyong", "Guan", role = "aut"),
-                 person("Alec","Fabbri", email = "fabbrialhs@gmail.com", role = "aut"), person("Krish", "Karuturi", email = "Krishna.Karuturi@jax.org", role
-                 = "aut"), person("Joshy", "George", email = "Joshy.George@jax.org", role = "aut") )
-Description: Whole transcriptomic profiles are useful for studying the expression levels of thousands of genes across samples. Clustering algorithms are
-                 used to identify patterns in these profiles to determine clinically relevant subgroups. Feature selection is a critical integral part of
-                 the process. Currently, there are many feature selection and clustering methods to identify the relevant genes and perform clustering of
-                 samples. However, choosing the appropriate methods is difficult as recent work demonstrates that no method is the clear winner. Hence, we
-                 present an R-package called `multiClust` that allows researchers to experiment with the choice of combination of methods for gene selection
-                 and clustering with ease. In addition, using multiClust, we present the merit of gene selection and clustering methods in the context of
-                 clinical relevance of clustering, specifically clinical outcome. Our integrative R- package contains: 1. A function to read in gene
-                 expression data and format appropriately for analysis in R. 2. Four different ways to select the number of genes a. Fixed b. Percent c.
-                 Poly d. GMM 3. Four gene ranking options that order genes based on different statistical criteria a. CV_Rank b. CV_Guided c. SD_Rank d.
-                 Poly 4. Two ways to determine the cluster number a. Fixed b. Gap Statistic 5. Two clustering algorithms a. Hierarchical clustering b.
-                 K-means clustering 6. A function to calculate average gene expression in each sample cluster 7. A function to correlate sample clusters
-                 with clinical outcome Order of Function use: 1. input_file, a function to read-in the gene expression file and assign gene probe names as
-                 the rownames. 2. number_probes, a function to determine the number of probes to select for in the gene feature selection process. 3.
-                 probe_ranking, a function to select for gene probes using one of the available gene probe ranking options. 4. number_clusters, a function
-                 to determine the number of clusters to be used to cluster genes and samples. 5. cluster_analysis, a function to perform Kmeans or
-                 Hierarchical clustering analysis of the selected gene expression data. 6. avg_probe_exp, a function to produce a matrix containing the
-                 average expression of each gene probe within each sample cluster. 7. surv_analysis, a function to produce Kaplan-Meier Survival Plots of
-                 selected gene expression data.
+Version: 0.99.3
+Date: 2015-12-07
+Authors@R: c(
+    person("Nathan","Lawlor", email = "nathan.lawlor03@gmail.com",
+    role = c("aut", "cre")),
+    person("Peiyong", "Guan", role = "aut"),
+    person("Alec","Fabbri", email = "fabbrialhs@gmail.com", role = "aut"),
+    person("Krish", "Karuturi", email = "Krishna.Karuturi@jax.org",
+    role = "aut"),
+    person("Joshy", "George", email = "Joshy.George@jax.org", role = "aut")
+    )
+Description: Whole transcriptomic profiles are useful for studying the
+    expression levels of thousands of genes across samples. Clustering
+    algorithms are used to identify patterns in these profiles to determine
+    clinically relevant subgroups. Feature selection is a critical integral
+    part of the process. Currently, there are many feature selection and
+    clustering methods to identify the relevant genes and perform clustering
+    of samples. However, choosing the appropriate methods is difficult as
+    recent work demonstrates that no method is the clear winner. Hence, we
+    present an R-package called `multiClust` that allows researchers to
+    experiment with the choice of combination of methods for gene selection
+    and clustering with ease. In addition, using multiClust, we present the
+    merit of gene selection and clustering methods in the context of clinical
+    relevance of clustering, specifically clinical outcome. Our integrative R-
+    package contains: 1. A function to read in gene expression data and
+    format appropriately for analysis in R. 2. Four different ways to select
+    the number of genes a. Fixed b. Percent c. Poly d. GMM 3. Four gene
+    ranking options that order genes based on different statistical criteria
+    a. CV_Rank b. CV_Guided c. SD_Rank d. Poly 4. Two ways to determine the
+    cluster number a. Fixed b. Gap Statistic 5. Two clustering algorithms
+    a. Hierarchical clustering b. K-means clustering 6. A function to
+    calculate average gene expression in each sample cluster 7. A function
+    to correlate sample clusters with clinical outcome Order of Function
+    use: 1. input_file, a function to read-in the gene expression file and
+    assign gene probe names as the rownames. 2. number_probes, a function to
+    determine the number of probes to select for in the gene feature selection
+    process. 3. probe_ranking, a function to select for gene probes using one
+    of the available gene probe ranking options. 4. number_clusters, a
+    function to determine the number of clusters to be used to cluster genes
+    and samples. 5. cluster_analysis, a function to perform Kmeans or
+    Hierarchical clustering analysis of the selected gene expression data.
+    6. avg_probe_exp, a function to produce a matrix containing the average
+    expression of each gene probe within each sample cluster.
+    7. surv_analysis, a function to produce Kaplan-Meier Survival Plots
+    of selected gene expression data.
 License: GPL (>= 2)
-biocViews: FeatureExtraction, Clustering
+biocViews: FeatureExtraction, Clustering, GeneExpression, Survival
 LazyData: TRUE
 Imports: mclust, ctc, survival, cluster, dendextend, amap, graphics, grDevices
-Suggests: knitr, gplots
+Suggests: knitr, gplots, RUnit, BiocGenerics
 VignetteBuilder: knitr
 RoxygenNote: 5.0.0
 NeedsCompilation: no
