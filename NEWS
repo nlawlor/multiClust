@@ -9,3 +9,4 @@ December 7th, 2015
 
 December 23rd, 2015
 -Added NEWS file
+-Added unitTests files to test functions in 'multiClust'
