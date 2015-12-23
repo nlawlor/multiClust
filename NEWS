@@ -1,0 +1,11 @@
+NEWS File for multiClust
+This file will contain information about updates for multiClust
+
+December 7th, 2015
+-Updated DESCRIPTION file to have <80 characters per line
+  -Added new biocViews
+-Updated NAMESPACE file
+  -Added IMPORTs to the file 
+
+December 23rd, 2015
+-Added NEWS file
