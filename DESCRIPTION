@@ -2,7 +2,7 @@ Package: multiClust
 Type: Package
 Title: A collection of gene feature selection and clustering analysis algorithms
 Version: 0.99.2
-Date: 2015-11-16
+Date: 2015-12-23
 Authors@R: c( person("Nathan","Lawlor", email = "nathan.lawlor03@gmail.com", role = c("aut", "cre")), person("Peiyong", "Guan", role = "aut"),
                  person("Alec","Fabbri", email = "fabbrialhs@gmail.com", role = "aut"), person("Krish", "Karuturi", email = "Krishna.Karuturi@jax.org", role
                  = "aut"), person("Joshy", "George", email = "Joshy.George@jax.org", role = "aut") )
