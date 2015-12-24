@@ -8,6 +8,7 @@ December 7th, 2015
   -Added IMPORTs to the file 
 
 December 23rd, 2015
+-Package version pushed to 0.99.3
 -Added NEWS file
 -Added unitTests files to test functions in 'multiClust'
 -Added updates to vignette for obtaining GSE datasets from GEO
