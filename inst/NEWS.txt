@@ -1,2 +1,0 @@
-# NEWS File for multiClust
-# This file will contain information about updates for multiClust
