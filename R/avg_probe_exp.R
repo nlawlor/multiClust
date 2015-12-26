@@ -60,7 +60,7 @@
 
 avg_probe_exp <- function(sel.exp, samp_cluster, data_name,
     cluster_type="HClust", distance="euclidean", linkage_type="ward.D2",
-    probe_rank="CV_Rank", probe_num_selection="Fixed_Probe_Num",
+    probe_rank="SD_Rank", probe_num_selection="Fixed_Probe_Num",
     cluster_num_selection="Fixed_Clust_Num") {
 
     # Conditionals to make sure inputs are strings
