@@ -336,7 +336,7 @@ or probe selection process.
    
 2. **Percent** is another option where the user provides a positive integer 
 between 0 and 100 indicating the percentage of total genes or probes to 
-select from the dataset. For example, if the dataset has 20,000 total probes 
+select from the dataset. For example, if the dataset has 300 total probes 
 and the user specifies:
  
 ```{r, eval=TRUE}
@@ -354,7 +354,7 @@ gene_num <- number_probes(input=exp_file,
 
 ```
 
-As a result, 50% of the total dataset probes, or 300 probes, will be selected.
+As a result, 50% of the total dataset probes, or 150 probes, will be selected.
 
 3. **Poly** is the third option which fits three second degree polynomial
 functions to the gene expression dataset based on the dataset's mean
@@ -463,7 +463,7 @@ exp_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
 data.exprs <- input_file(input=exp_file)
 
 # Call probe_ranking function
-# Select for 500 probes
+# Select for 300 probes
 # Choose genes using the SD_Rank method
 ranked.exprs <- probe_ranking(input=exp_file,
     probe_number=300, 
