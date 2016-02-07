@@ -5,6 +5,10 @@
 #' matrix. This object is an output of the probe_ranking function.
 #' @param cluster_type String indicating the type of clustering method to use.
 #' "Kmeans" or "HClust" are the two options. The default is set to "HClust".
+#' @param seed A positive integer vector >1 indicating a random starting position
+#' for the centers of the clusters to be used for the k-means clustering
+#' algorithm. The default value is set to NULL and is not used when
+#' Hierarchical clustering is chosen.
 #' @param distance String describing the distance metric to use for
 #' the dist function during hierarchical clustering. dist uses a default
 #' distance metric of Euclidean distance. Options include one of "euclidean",
@@ -64,7 +68,7 @@
 #'
 #' # Call function using HClust parameters
 #' hclust_analysis <- cluster_analysis(sel.exp=sel.data, cluster_type="HClust",
-#'     distance="euclidean", linkage_type="ward.D2",
+#'     seed = NULL, distance="euclidean", linkage_type="ward.D2",
 #'     gene_distance="correlation", num_clusters=3,
 #'     data_name="GSE2034 Breast", probe_rank="CV_Rank",
 #'     probe_num_selection="Fixed_Probe_Num",
@@ -73,12 +77,12 @@
 #' # Example 2: Kmeans Analysis
 #' # Call function for Kmeans parameters
 #' kmeans_analysis <- cluster_analysis(sel.exp=sel.data, cluster_type="Kmeans",
-#'     distance=NULL, linkage_type=NULL, gene_distance=NULL,
+#'     seed = 1, distance=NULL, linkage_type=NULL, gene_distance=NULL,
 #'     num_clusters=3, data_name="GSE2034 Breast",
 #'     probe_rank="CV_Rank", probe_num_selection="Fixed_Probe_Num",
 #'     cluster_num_selection="Fixed_Clust_Num")
 #' @export
-cluster_analysis <- function(sel.exp, cluster_type="HClust",
+cluster_analysis <- function(sel.exp, cluster_type="HClust", seed = NULL,
     distance="euclidean", linkage_type="ward.D2",
     gene_distance="correlation", num_clusters, data_name,
     probe_rank="SD_Rank", probe_num_selection="Fixed_Probe_Num",
@@ -218,7 +222,7 @@ cluster_analysis <- function(sel.exp, cluster_type="HClust",
     # Code for Kmeans clustering analysis
     if (cluster_type == "Kmeans"){
         # Kmeans clustering and plot output
-        set.seed(1293075)
+        set.seed(seed)
         exp.sel.k <- stats::kmeans(t(exp.sel), centers=num_clusters, nstart=25)
         kmeans_name <- paste(data_name, probe_rank, probe_num_selection,
             cluster_num_selection,"Kmeans.Plot.pdf", sep = ".")
