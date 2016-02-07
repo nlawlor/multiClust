@@ -573,19 +573,24 @@ function.
 2. The second argument "cluster_type" is a string indicating the type of 
 clustering method to use. *Kmeans* or *HClust* are the two options.
 
-3. The third argument "distance" is a string describing the distance metric 
+3. The third argument "seed" is a positive integer vector >1 indicating
+a random starting position for the centers of the clusters to be used for
+the k-means clustering algorithm. The default value is set to NULL and is
+not used when the Hierarchical clustering option "HClust" is chosen.
+
+4. The fourth argument "distance" is a string describing the distance metric 
 to use for Hierarchical clustering via the `dist` function. `dist` uses 
 a default distance metric of Euclidean distance. Options include
 one of "euclidean", "maximum", manhattan", "canberra", "binary", or 
 "minkowski". Kmeans does not use a distance metric.
 
-4. The fourth argument, "linkage_type" is a string describing the linkage
+5. The fifth argument, "linkage_type" is a string describing the linkage
 metric to be used for hierarchical clustering in the `hclust` function.
 The default is "ward.D2", however other options include "average", "complete",
 "median", "centroid", "single", and "mcquitty". Kmeans does not use a 
 linkage metric.
 
-5. The fifth argument, "gene_distance" is a string describing the distance
+6. The sixth argument, "gene_distance" is a string describing the distance
 measure to be used for the `Dist` function when performing hierarchical
 clustering of genes. Options include one of "euclidean", "maximum",
 "manhattan", "canberra", "binary", "pearson", "abspearson", "correlation",
@@ -593,24 +598,24 @@ clustering of genes. Options include one of "euclidean", "maximum",
 set to "correlation". The argument can be set to NULL when Kmeans
 clustering is used.
 
-6. The sixth argument "num_clusters" is a positive integer to specify the 
+7. The seventh argument "num_clusters" is a positive integer to specify the 
 number of clusters samples will be divided into. This number is 
 determined by the `number_clusters` function.
 
-7. The seventh argument "data_name" is a string indicating the cancer type 
+8. The eighth argument "data_name" is a string indicating the cancer type 
 and/or name of the dataset being analyzed. This name will be used to label 
 the sample dendrograms and heatmap files.
 
-8. The eighth argument "probe_rank" is a string indicating the feature 
+9. The ninth argument "probe_rank" is a string indicating the feature 
 selection method used in the `probe_ranking` function. Options include
 "CV_Rank", "CV_Guided", "SD_Rank", and "Poly".
 
-9. The ninth argument "probe_num_selection" is a string indicating the way 
+10. The tenth argument "probe_num_selection" is a string indicating the way 
 in which probes were selected in the `number_probes` function. Options 
 include "Fixed_Probe_Num", "Percent_Probe_Num", "Poly_Probe_Num", 
 and "Adaptive_Probe_Num".
 
-10. The tenth argument, "cluster_num_selection" is a string indicating 
+11. The eleventh argument, "cluster_num_selection" is a string indicating 
 how the number of clusters were determined in the number_clusters function. 
 Options include "Fixed_Clust_Num" and "Gap_Statistic".
 
@@ -650,7 +655,7 @@ library(multiClust)
 
 # Call the cluster_analysis function
 hclust_analysis <- cluster_analysis(sel.exp=ranked.exprs,
-    cluster_type="HClust",
+    cluster_type="HClust", seed=NULL,
     distance="euclidean", linkage_type="ward.D2", 
     gene_distance="correlation",
     num_clusters=3, data_name="GSE2034 Breast", 
@@ -741,7 +746,7 @@ library(multiClust)
 
 # Call the cluster_analysis function
  kmeans_analysis <- cluster_analysis(sel.exp=ranked.exprs,
-    cluster_type="Kmeans",
+    cluster_type="Kmeans", seed=5,
     distance=NULL, linkage_type=NULL, 
     gene_distance=NULL, num_clusters=3,
     data_name="GSE2034 Breast", probe_rank="SD_Rank",
