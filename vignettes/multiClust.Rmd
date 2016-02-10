@@ -126,10 +126,10 @@ library(multiClust)
 gse <- getGEO(GEO="GSE2034")
     
 # Save the gene expression matrix as an object
-data.gse <- exprs(gse)
+data.gse <- exprs(gse[[1]])
     
 # Save the patient clinical data to an object
-pheno <- pData(phenoData(gse))
+pheno <- pData(phenoData(gse[[1]]))
     
 # Write the gene expression and clinical data to text files
 WriteMatrixToFile(tmpMatrix=data.gse, tmpFileName="GSE2034.expression.txt",
