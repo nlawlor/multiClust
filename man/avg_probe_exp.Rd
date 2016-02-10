@@ -2,8 +2,8 @@
 % Please edit documentation in R/avg_probe_exp.R
 \name{avg_probe_exp}
 \alias{avg_probe_exp}
-\title{Function to produce a matrix containing the average expression of each gene probe
-within each sample cluster.}
+\title{Function to produce a matrix containing the average expression of each
+gene probe within each sample cluster.}
 \usage{
 avg_probe_exp(sel.exp, samp_cluster, data_name, cluster_type = "HClust",
   distance = "euclidean", linkage_type = "ward.D2",
@@ -11,70 +11,73 @@ avg_probe_exp(sel.exp, samp_cluster, data_name, cluster_type = "HClust",
   cluster_num_selection = "Fixed_Clust_Num")
 }
 \arguments{
-\item{sel.exp}{Object containing the numeric selected gene expression matrix.
-This object is an output of the probe_ranking function.}
+\item{sel.exp}{Object containing the numeric selected gene
+expression matrix. This object is an output of the probe_ranking function.}
 
 \item{samp_cluster}{Object vector containing the samples and the cluster
 number they belong to. This is an output of the cluster_analysis function.}
 
-\item{data_name}{String indicating the cancer type and name of the dataset being analyzed.
-This name will be used to label the sample dendrograms and heatmap files.}
+\item{data_name}{String indicating the cancer type and name of the
+dataset being analyzed. This name will be used to label the sample
+dendrograms and heatmap files.}
 
-\item{cluster_type}{String indicating the type of clustering method used in the
-cluster_analysis function. "Kmeans" or "HClust" are the two options.}
+\item{cluster_type}{String indicating the type of clustering method
+used in the cluster_analysis function. "Kmeans" or "HClust"
+are the two options.}
 
 \item{distance}{String describing the distance metric uses for HClust in
-the cluster_analysis function. Options include one of "euclidean", "maximum", manhattan",
-"canberra", "binary", or "minkowski".}
+the cluster_analysis function. Options include one of "euclidean",
+"maximum", manhattan", "canberra", "binary", or "minkowski".}
 
 \item{linkage_type}{String describing the linkage metric used in the
-cluster_analysis function. Options include "ward.D2", "average", "complete",
-"median", "centroid", "single", and "mcquitty".}
+cluster_analysis function. Options include "ward.D2", "average",
+"complete", "median", "centroid", "single", and "mcquitty".}
 
-\item{probe_rank}{String indicating the feature selection method used in the
-probe_ranking function. Options include "CV_Rank", "CV_Guided", "SD_Rank", and
-"Poly".}
+\item{probe_rank}{String indicating the feature selection method used
+in the probe_ranking function. Options include "CV_Rank", "CV_Guided",
+"SD_Rank", and "Poly".}
 
-\item{probe_num_selection}{String indicating the way in which probes were selected
-in the number_probes function. Options include "Fixed_Probe_Num",
-"Percent_Probe_Num", and "Adaptive_Probe_Num".}
+\item{probe_num_selection}{String indicating the way in which probes
+were selected in the number_probes function. Options include
+"Fixed_Probe_Num", "Percent_Probe_Num", and "Adaptive_Probe_Num".}
 
-\item{cluster_num_selection}{String indicating how the number of clusters were
-determined in the number_clusters function.Options include "Fixed_Clust_Num"
- and "Gap_Statistic".}
+\item{cluster_num_selection}{String indicating how the number of
+clusters were determined in the number_clusters function. Options include
+"Fixed_Clust_Num" and "Gap_Statistic".}
 }
 \value{
-Returns an object matrix with the average mean expression for each probe
-in each sample cluster. Also outputs the object to a text file.
+Returns an object matrix with the average mean expression for
+each probe in each sample cluster. Also outputs the object to a text file.
 }
 \description{
-Function to produce a matrix containing the average expression of each gene probe
-within each sample cluster.
+Function to produce a matrix containing the average expression of each
+gene probe within each sample cluster.
 }
 \examples{
 # Produce matrix of average expression of each probe in each cluster
 # Load in a data file
-data_file <- system.file("extdata", "GSE2034.normalized.expression.txt", package = "multiClust")
-data <- input_file(input = data_file)
+data_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
+    package="multiClust")
+data <- input_file(input=data_file)
 # Choose 300 genes to select for
-gene_num <- number_probes(input = data, data.exp = data, Fixed = 300,
-   Percent = NULL, Adaptive = NULL)
+gene_num <- number_probes(input=data_file, data.exp=data, Fixed=300,
+   Percent=NULL, Adaptive=NULL)
 # Choose the "CV_Rank" Method for gene ranking
-sel.data <- probe_ranking(input = data_file, probe_number = 300,
-   probe_num_selection = "Fixed_Probe_Num", data.exp = data, method = "CV_Rank")
+sel.data <- probe_ranking(input=data_file, probe_number=300,
+    probe_num_selection="Fixed_Probe_Num", data.exp=data, method="CV_Rank")
 # Choose a fixed cluster number of 3
-clust_num <- number_clusters(data.exp = data, Fixed = 3, gap_statistic = NULL)
+clust_num <- number_clusters(data.exp=data, Fixed=3, gap_statistic=NULL)
 # Call function for Kmeans parameters
-kmeans_analysis <- cluster_analysis(sel.exp = sel.data, cluster_type = "Kmeans",
-   distance = NULL, linkage_type = NULL, gene_distance = NULL,
-   num_clusters = 3, data_name = "GSE2034 Breast",
-   probe_rank = "CV_Rank", probe_num_selection = "Fixed_Probe_Num",
-   cluster_num_selection = "Fixed_Clust_Num")
+kmeans_analysis <- cluster_analysis(sel.exp=sel.data, cluster_type="Kmeans",
+    distance=NULL, linkage_type=NULL, gene_distance=NULL,
+    num_clusters=3, data_name="GSE2034 Breast",
+    probe_rank="CV_Rank", probe_num_selection="Fixed_Probe_Num",
+    cluster_num_selection="Fixed_Clust_Num")
 # Call function for average matrix expression calculation
-avg_matrix <- avg_probe_exp(sel.exp = sel.data, samp_cluster = kmeans_analysis,
-   data_name = "GSE2034 Breast", cluster_type = "Kmeans", distance = NULL,
-   linkage_type = NULL, probe_rank = "CV_Rank",
-   probe_num_selection = "Fixed", cluster_num_selection = "Fixed_Clust_Num")
+avg_matrix <- avg_probe_exp(sel.exp=sel.data, samp_cluster=kmeans_analysis,
+    data_name="GSE2034 Breast", cluster_type="Kmeans", distance=NULL,
+    linkage_type=NULL, probe_rank="CV_Rank",
+    probe_num_selection="Fixed", cluster_num_selection="Fixed_Clust_Num")
 }
 \author{
 Nathan Lawlor, Alec Fabbri

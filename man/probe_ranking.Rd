@@ -2,58 +2,63 @@
 % Please edit documentation in R/probe_ranking.R
 \name{probe_ranking}
 \alias{probe_ranking}
-\title{Function to select for genes using one of the available gene probe ranking options.}
+\title{Function to select for genes using one of the available gene
+probe ranking options.}
 \usage{
 probe_ranking(input, probe_number, probe_num_selection = "Fixed_Probe_Num",
-  data.exp, method = "CV_Rank")
+  data.exp, method = "SD_Rank")
 }
 \arguments{
 \item{input}{String indicating the name of the text file containing
 the gene expression matrix.}
 
-\item{probe_number}{Positive integer indicating the number of gene probes to be selected as
-determined by the number_probes function.}
+\item{probe_number}{Positive integer indicating the number of gene probes
+to be selected as determined by the number_probes function.}
 
-\item{probe_num_selection}{String indicating the way in which number of probes were selected for.
-Options include "Fixed_Probe_Num", "Percent_Probe_Num", and "Adaptive_Probe_Num".}
+\item{probe_num_selection}{String indicating the way in which number of
+probes were selected for. Options include "Fixed_Probe_Num",
+"Percent_Probe_Num", and "Adaptive_Probe_Num".}
 
-\item{data.exp}{The object containing the original gene expression matrix. This matrix
-is outputted by the input_file function.}
+\item{data.exp}{The object containing the original gene expression matrix.
+This matrix is outputted by the input_file function.}
 
-\item{method}{A string indicating the gene probe ranking method to use. Possible options include
-"CV_Rank", "CV_Guided", "SD_Rank", and "Poly".}
+\item{method}{A string indicating the gene probe ranking method to use.
+Possible options include "CV_Rank", "CV_Guided", "SD_Rank", and "Poly".
+The default is set to "SD_Rank".}
 }
 \value{
-An object containing the selected gene expression matrix for a particular
-ranking method. In addition a text file containing the selected gene expression data
-is produced.
+An object containing the selected gene expression matrix for
+a particular ranking method. In addition a text file containing the
+selected gene expression data is produced.
 }
 \description{
-Function to select for genes using one of the available gene probe ranking options.
+Function to select for genes using one of the available gene
+probe ranking options.
 }
 \note{
-CV_Rank is a gene probe ranking method that selects for probes with the
-highest coefficient of variation within the dataset.
-CV_Guided is a method that also uses the coefficient of variation of the dataset
-to select for gene probes. Every probe within the set is then plotted on a mean and
-standard deviation graph (with SD being the y-axis). A line is plotted starting from
-the origin with a slope of the coefficient of variation. The mean and standard deviation
-cutoff moves along this line until an equal or less then number of desired
-probes is above the cutoff.
-SD_Rank is a gene probe ranking method that selects for probes with the highest standard
-deviation within the dataset.
-Poly is a ranking method that fits three second degree
-polynomial functions of mean and standard deviation to the dataset to select
+CV_Rank is a gene probe ranking method that selects for probes
+with the highest coefficient of variation within the dataset.
+CV_Guided is a method that also uses the coefficient of variation of the
+dataset to select for gene probes. Every probe within the set is then
+plotted on a mean and standard deviation graph (with SD being the y-axis).
+A line is plotted starting from the origin with a slope of the coefficient
+of variation. The mean and standard deviation cutoff moves along this line
+until an equal or less then number of desired probes is above the cutoff.
+SD_Rank is a gene probe ranking method that selects for probes with the
+highest standard deviation within the dataset.
+Poly is a ranking method that fits three second degree polynomial
+functions of mean and standard deviation to the dataset to select
 the most variable probes in the dataset.
 }
 \examples{
 # Producing a selected gene expression matrix using one of the
    # probe ranking options
 # Load in a test file
-data_file <- system.file("extdata", "GSE2034.normalized.expression.txt", package = "multiClust")
+data_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
+    package="multiClust")
 data <- input_file(data_file)
-selected_probes <- probe_ranking(input = data_file, probe_number = 300,
-   probe_num_selection = "Fixed_Probe_Num", data.exp = data, method = "CV_Rank")
+selected_probes <- probe_ranking(input=data_file, probe_number=300,
+   probe_num_selection="Fixed_Probe_Num", data.exp=data, method="CV_Rank")
 }
 \author{
 Peiyong Guan, Alec Fabbri, Nathan Lawlor

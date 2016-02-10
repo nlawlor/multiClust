@@ -11,11 +11,11 @@ WriteMatrixToFile(tmpMatrix, tmpFileName, blnRowNames, blnColNames)
 
 \item{tmpFileName}{The string name of the text file to write the matrix to.}
 
-\item{blnRowNames}{Logical value indicating if row names of the matrix should be written
-along with the matrix.}
+\item{blnRowNames}{Logical value indicating if row names of the matrix
+should be written along with the matrix.}
 
-\item{blnColNames}{Logical value indicating if the column names of the matrix should be
-written with the matrix.}
+\item{blnColNames}{Logical value indicating if the column names of the
+matrix should be written with the matrix.}
 }
 \value{
 Text file containing the data matrix.
@@ -28,10 +28,10 @@ Function to write a data matrix to a text file.
 #Load sample dataset
 data(iris)
 # View sample matrix
-iris[1:4,1:4]
+iris[1:4, 1:4]
 # Write sample matrix to text file
-WriteMatrixToFile(tmpMatrix = iris, tmpFileName = "iris.sample.matrix.txt",
-blnRowNames = TRUE, blnColNames = TRUE)
+WriteMatrixToFile(tmpMatrix=iris, tmpFileName="iris.sample.matrix.txt",
+blnRowNames=TRUE, blnColNames=TRUE)
 
 }
 \author{
