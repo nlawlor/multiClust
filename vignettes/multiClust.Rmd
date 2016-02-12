@@ -98,6 +98,9 @@ In order to use `multiClust`, the user will need two text files.
 
 * The first file is a gene probe expression dataset. This file should be
 a matrix with columns being the samples and the rows being genes or probes.
+Note that the gene expression dataset can be microarray or RNA-seq data.
+Please see the below examples for preprocessing both types of expression
+data.
 
 * The second file contains the patient clinical parameters. This file
 should be a matrix consisting of two columns. The first column contains
@@ -108,8 +111,8 @@ indicates an event has occurred.
 
 ### 1.1 Obtaining a Gene Expression Dataset and Clinical Information
 
-In this example, a gene expression dataset, GSE2034, will be obtained 
-from the Gene Expression Omnibus (GEO) website <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=gse2034>.
+In this example, a gene expression microarray dataset, GSE2034, will be 
+obtained from the Gene Expression Omnibus (GEO) website <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=gse2034>. 
 
 The following code can be used to extract the gene expression data and
 clinical information from the series matrix text zip file. When using this
@@ -178,7 +181,7 @@ WriteMatrixToFile(tmpMatrix=pheno, tmpFileName="GSE2034.clinical.txt",
     
 ```
 
-#### 1.2 Normalization of Gene Expression Datasets
+#### 1.2 Normalization of Microarray Gene Expression Datasets
 
 Some datasets on GEO are already normalized using Robust Multichip Average
 (RMA) procedure available in the 'affy' R pacakge or quantile normalization
@@ -225,7 +228,33 @@ WriteMatrixToFile(tmpMatrix=data.log,
 
 ```
 
-#### 1.3 Formatting the Patient Clinical Information
+#### 1.3 Working with RNA-seq Expression Data
+
+Similar to microarray datasets, RNA-seq expression data can be used
+with this package. Typically, RNA-seq data is in table format with rows
+being the gene probe ID's and the columns being the different samples.
+RNA-seq data is often reported in FPKM or fragments per kilobase of
+exon per million reads mapped. Before analyzing RNA-seq data, it is common
+to log transform the data. The example below will show how to process RNA-seq
+data using a toy dataset of probes and samples
+
+```{r, eval=TRUE}
+# Create a toy RNA-seq dataset of FPKM values and samples
+data <- matrix(data = rnorm(n = 25, mean = 5, sd = 1), nrow = 5, 
+               ncol = 5)
+colnames(data) <- c("Samp 1", "Samp 2", "Samp 3", "Samp 4", "Samp 5")
+rownames(data) <- c("Probe 1", "Probe 2", "Probe 3", "Probe 4", "Probe 5")
+
+# Log transform the data for analysis
+data.new <- log2(data + 1)
+
+# Display first few rows of the new data
+data.new[1:3,1:3]
+
+```
+
+
+#### 1.4 Formatting the Patient Clinical Information
 
 As mentioned in the beginning of this section, the patient survival
 information file should be a matrix consisting of two columns. However,
