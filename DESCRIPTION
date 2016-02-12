@@ -1,8 +1,9 @@
 Package: multiClust
 Type: Package
-Title: A collection of gene feature selection and clustering analysis algorithms
-Version: 0.99.3
-Date: 2015-12-23
+Title: A collection of gene feature selection and clustering analysis
+        algorithms
+Version: 0.99.4
+Date: 2016-02-11
 Authors@R: c(
     person("Nathan","Lawlor", email = "nathan.lawlor03@gmail.com",
     role = c("aut", "cre")),
@@ -49,10 +50,16 @@ Description: Whole transcriptomic profiles are useful for studying the
 License: GPL (>= 2)
 biocViews: FeatureExtraction, Clustering, GeneExpression, Survival
 LazyData: TRUE
-Imports: mclust, ctc, survival, cluster, dendextend, amap, graphics, grDevices
+Imports: mclust, ctc, survival, cluster, dendextend, amap, graphics,
+        grDevices
 Suggests: knitr, gplots, RUnit, BiocGenerics
 VignetteBuilder: knitr
-RoxygenNote: 5.0.0
+RoxygenNote: 5.0.1
 NeedsCompilation: no
-Author: Nathan Lawlor [aut, cre], Peiyong Guan [aut], Alec Fabbri [aut], Krish Karuturi [aut], Joshy George [aut]
+Packaged: 2015-12-01 00:19:54 UTC; Nathan
+Author: Nathan Lawlor [aut, cre],
+    Peiyong Guan [aut],
+    Alec Fabbri [aut],
+    Krish Karuturi [aut],
+    Joshy George [aut]
 Maintainer: Nathan Lawlor <nathan.lawlor03@gmail.com>
