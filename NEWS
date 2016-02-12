@@ -1,14 +1,9 @@
 NEWS File for multiClust
 This file will contain information about updates for multiClust
 
-December 7th, 2015
--Updated DESCRIPTION file to have <80 characters per line
-  -Added new biocViews
--Updated NAMESPACE file
-  -Added IMPORTs to the file 
+2-11-16
 
-December 23rd, 2015
--Package version pushed to 0.99.3
--Added NEWS file
--Added unitTests files to test functions in 'multiClust'
--Added updates to vignette for obtaining GSE datasets from GEO
+-Packaged changed to version 0.99.4
+-Revised the code in the vignette
+-Added explanation of using RNA-seq data with package in vignette
+-Revised code documentation for probe_ranking function
