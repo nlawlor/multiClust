@@ -7,3 +7,10 @@ This file will contain information about updates for multiClust
 -Revised the code in the vignette
 -Added explanation of using RNA-seq data with package in vignette
 -Revised code documentation for probe_ranking function
+
+2-13-16
+
+-Package version changed to 0.99.5
+-Added option to specify FDR cutoff when using the Adaptive GMM
+method in the number_probes function.
+-Updated documentation in the vignette
