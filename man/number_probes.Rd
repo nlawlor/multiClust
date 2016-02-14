@@ -6,7 +6,7 @@
 feature selection process.}
 \usage{
 number_probes(input, data.exp, Fixed = 1000, Percent = NULL, Poly = NULL,
-  Adaptive = NULL)
+  Adaptive = NULL, cutoff = NULL)
 }
 \arguments{
 \item{input}{String indicating the name of the file containing your
@@ -29,6 +29,12 @@ mean and standard deviations.}
 
 \item{Adaptive}{When TRUE, Gaussian mixture modeling is used
 to determine the number of gene probes to select.}
+
+\item{cutoff}{Positive number between 0 and 1 specifying the false
+discovery rate (FDR) cutoff to use with the Adaptive Gaussian mixture
+modeling method. The default value is set to NULL. However, when Adaptive
+is TRUE, cutoff should be a positive integer between 0 and 1. Common
+values to use are 0.05 or 0.01.}
 }
 \value{
 Returns an object with the  number of gene probes that will be
@@ -57,20 +63,20 @@ data_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
     package="multiClust")
 data <- input_file(input=data_file)
 gene_num <- number_probes(input=data_file, data.exp=data, Fixed=300,
-    Percent=NULL, Poly=NULL, Adaptive=NULL)
+    Percent=NULL, Poly=NULL, Adaptive=NULL, cutoff=NULL)
 
 # Example 2: Choosing 50\% of the total selected gene probes in a dataset
 gene_num <- number_probes(input=data_file, data.exp=data, Fixed=NULL,
-    Percent=50, Poly=NULL, Adaptive=NULL)
+    Percent=50, Poly=NULL, Adaptive=NULL, cutoff=NULL)
 
 # Example 3: Choosing the Poly method
 gene_num <- number_probes(input=data_file, data.exp=data, Fixed=NULL,
-    Percent=NULL, Poly=TRUE, Adaptive=NULL)
+    Percent=NULL, Poly=TRUE, Adaptive=NULL, cutoff=NULL)
 \dontrun{
 # Example 4: Choosing the Adaptive Gaussian Mixture Modeling method
 # Very long computation time, so example will not be run
 gene_num <- number_probes(input=data_file, data.exp=data, Fixed=NULL,
-    Percent=NULL, Poly=NULL, Adaptive=TRUE)
+    Percent=NULL, Poly=NULL, Adaptive=TRUE, cutoff=0.01)
    }
 }
 \author{
