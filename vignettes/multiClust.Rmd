@@ -337,9 +337,15 @@ in their gene selection analysis.
     
 * The second argument "data.exp" is the object containing the expression matrix
     
-* The last four arguments "Fixed", "Percent", "Poly", and "Adaptive" 
+* The next four arguments "Fixed", "Percent", "Poly", and "Adaptive" 
     are the four different methods that determine how the number of genes are 
     selected. The default option in the function is set to "Fixed".
+
+* The last argument "cutoff" is a positive number between 0 and 1 specifying
+    the false discovery rate (FDR) cutoff to use with the Adaptive Gaussian
+    mixture modeling method. The default value is set to NULL. However, when
+    Adaptive is TRUE, cutoff should be a positive integer between 0 and 1.
+    Common values to use are 0.05 or 0.01.
     
 1. **Fixed** is an option where the user provides a positive integer to specify
 desired number of genes or probes to select for. The default value of
@@ -356,7 +362,7 @@ exp_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
 
 gene_num <- number_probes(input=exp_file,
     data.exp=data.exprs, Fixed=300,
-    Percent=NULL, Poly=NULL, Adaptive=NULL)
+    Percent=NULL, Poly=NULL, Adaptive=NULL, cutoff=NULL)
 
 ```
    
@@ -379,7 +385,7 @@ exp_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
 
 gene_num <- number_probes(input=exp_file, 
     data.exp=data.exprs, Fixed=NULL,
-    Percent=50, Poly=NULL, Adaptive=NULL)
+    Percent=50, Poly=NULL, Adaptive=NULL, cutoff=NULL)
 
 ```
 
@@ -400,7 +406,7 @@ exp_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
 
 gene_num <- number_probes(input=exp_file, 
     data.exp=data.exprs, Fixed=NULL,
-    Percent=NULL, Poly=TRUE, Adaptive=NULL)
+    Percent=NULL, Poly=TRUE, Adaptive=NULL,cutoff=NULL)
 
 ```
 
@@ -413,9 +419,11 @@ to select for. When the user specifies:
 # Load necessary libraries
 library(multiClust)
 
+# Run the Adaptive Gaussian Mixture Modeling method
+# Using an FDR cutoff of 0.01 or 1 percent
 gene_num <- number_probes(input=exp_file, 
     data.exp=data.exprs, Fixed=NULL,
-    Percent=NULL, Poly=NULL, Adaptive=TRUE)
+    Percent=NULL, Poly=NULL, Adaptive=TRUE, cutoff=0.01)
 
 ```
 
