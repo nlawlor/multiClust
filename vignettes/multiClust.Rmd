@@ -8,6 +8,7 @@ output:
     toc_depth: 6
   pdf_document:
     toc: yes
+    toc_depth: 6
 vignette: |
   %\VignetteIndexEntry{"A Guide to multiClust"}
   %\VignetteEngine{knitr::rmarkdown}
@@ -204,7 +205,7 @@ library(multiClust)
 gse <- getGEO(GEO="GSE2034")
     
 # Save the gene expression matrix as an object
-data.gse <- exprs(gse)
+data.gse <- exprs(gse[[1]])
 
 # Quantile normalization of the dataset
 data.norm <- normalize.quantiles(data.gse, copy=FALSE)
@@ -1077,3 +1078,6 @@ Microarray Data."Bioinformatics 20.17 (2004): 3246-248.
 
 12. Antoine Lucas (2014). amap: Another Multidimensional Analysis Package.
 R package version 0.8-14. http://CRAN.R-project.org/package=amap
+
+13. Orchestrating high-throughput genomic analysis with Bioconductor. W. 
+Huber, V.J. Carey, R. Gentleman, ..., M. Morgan Nature Methods, 2015:12, 115.
