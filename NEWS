@@ -14,3 +14,9 @@ This file will contain information about updates for multiClust
 -Added option to specify FDR cutoff when using the Adaptive GMM
 method in the number_probes function.
 -Updated documentation in the vignette
+
+3-2-16
+
+-Package version pushed to 0.99.6
+-Added Biobase, GEOquery, and preprocessCore to package suggests
+-Minor revisions in the package vignette
