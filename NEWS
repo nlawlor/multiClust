@@ -20,3 +20,9 @@ method in the number_probes function.
 -Package version pushed to 0.99.6
 -Added Biobase, GEOquery, and preprocessCore to package suggests
 -Minor revisions in the package vignette
+
+6-19-16
+
+-Package version pushed to 1.0.3
+-Updated package title and abstract to reflect that of 
+publication in Cancer Informatics DOI: 10.4137/CIN.S38000.
