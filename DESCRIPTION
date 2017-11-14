@@ -1,8 +1,8 @@
 Package: multiClust
 Type: Package
 Title: A collection of gene feature selection and clustering analysis algorithms
-Version: 0.99.3
-Date: 2015-12-07
+Version: 1.8.1
+Date: 2017-11-14
 Authors@R: c(
     person("Nathan","Lawlor", email = "nathan.lawlor03@gmail.com",
     role = c("aut", "cre")),
@@ -50,7 +50,7 @@ License: GPL (>= 2)
 biocViews: FeatureExtraction, Clustering, GeneExpression, Survival
 LazyData: TRUE
 Imports: mclust, ctc, survival, cluster, dendextend, amap, graphics, grDevices
-Suggests: knitr, gplots, RUnit, BiocGenerics
+Suggests: knitr, gplots, RUnit, BiocGenerics, preprocessCore, Biobase, GEOquery, imager
 VignetteBuilder: knitr
 RoxygenNote: 5.0.0
 NeedsCompilation: no
