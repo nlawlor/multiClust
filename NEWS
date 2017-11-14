@@ -29,6 +29,6 @@ publication in Cancer Informatics DOI: 10.4137/CIN.S38000.
 
 11-14-17
 
--Package version pushed to 1.8.1
+-Package version pushed to 1.9.1
 -Fixed package vignette issue with loading heat map image
 -Added new package suggests "imager" to resolve loading above mentioned heat map
