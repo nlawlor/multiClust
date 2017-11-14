@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Package: multiClust
 Type: Package
 Title: A collection of gene feature selection and clustering analysis algorithms
@@ -57,52 +56,3 @@ RoxygenNote: 5.0.0
 NeedsCompilation: no
 Author: Nathan Lawlor [aut, cre], Peiyong Guan [aut], Alec Fabbri [aut], Krish Karuturi [aut], Joshy George [aut]
 Maintainer: Nathan Lawlor <nathan.lawlor03@gmail.com>
-=======
-Package: multiClust
-Type: Package
-Title: multiClust: An R-package for Identifying Biologically Relevant
-    Clusters in Cancer Transcriptome Profiles
-Version: 1.9.0
-Date: 2016-06-19
-Authors@R: c(
-    person("Nathan","Lawlor", email = "nathan.lawlor03@gmail.com",
-    role = c("aut", "cre")),
-    person("Peiyong", "Guan", role = "aut"),
-    person("Alec","Fabbri", email = "fabbrialhs@gmail.com", role = "aut"),
-    person("Krish", "Karuturi", email = "Krishna.Karuturi@jax.org",
-    role = "aut"),
-    person("Joshy", "George", email = "Joshy.George@jax.org", role = "aut")
-    )
-Description: Clustering is carried out to identify patterns in transcriptomics
-    profiles to determine clinically relevant subgroups of patients. Feature
-    (gene) selection is a critical and an integral part of the process.
-    Currently, there are many feature selection and clustering methods to
-    identify the relevant genes and perform clustering of samples. However,
-    choosing an appropriate methodology is difficult. In addition, extensive
-    feature selection methods have not been supported by the available
-    packages. Hence, we developed an integrative R-package called multiClust
-    that allows researchers to experiment with the choice of combination of
-    methods for gene selection and clustering with ease. Using multiClust,
-    we identified the best performing clustering methodology in the context
-    of clinical outcome. Our observations demonstrate that simple methods
-    such as variance-based ranking perform well on the majority of data sets,
-    provided that the appropriate number of genes is selected. However,
-    different gene ranking and selection methods remain relevant as no
-    methodology works for all studies.
-License: GPL (>= 2)
-biocViews: FeatureExtraction, Clustering, GeneExpression, Survival
-LazyData: TRUE
-Imports: mclust, ctc, survival, cluster, dendextend, amap, graphics,
-        grDevices
-Suggests: knitr, gplots, RUnit, BiocGenerics, preprocessCore, Biobase, GEOquery
-VignetteBuilder: knitr
-RoxygenNote: 5.0.1
-NeedsCompilation: no
-Packaged: 2015-12-01 00:19:54 UTC; Nathan
-Author: Nathan Lawlor [aut, cre],
-    Peiyong Guan [aut],
-    Alec Fabbri [aut],
-    Krish Karuturi [aut],
-    Joshy George [aut]
-Maintainer: Nathan Lawlor <nathan.lawlor03@gmail.com>
->>>>>>> upstream/master
