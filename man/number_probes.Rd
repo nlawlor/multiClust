@@ -2,69 +2,81 @@
 % Please edit documentation in R/number_probes.R
 \name{number_probes}
 \alias{number_probes}
-\title{Function to determine the number of gene probes to select for in the gene feature
-selection process.}
+\title{Function to determine the number of gene probes to select for in the gene
+feature selection process.}
 \usage{
 number_probes(input, data.exp, Fixed = 1000, Percent = NULL, Poly = NULL,
-  Adaptive = NULL)
+  Adaptive = NULL, cutoff = NULL)
 }
 \arguments{
 \item{input}{String indicating the name of the file containing your
 gene expression matrix.}
 
 \item{data.exp}{The object containing your numeric gene expression matrix.
-This matrix is an output of the input_file function previously introduced in
-this package.}
+This matrix is an output of the input_file function previously introduced
+in this package.}
 
-\item{Fixed}{A positive integer specifying a desired number of gene probes to select for.
-The default is set to 1000 gene probes.}
+\item{Fixed}{A positive integer specifying a desired number of gene probes
+to select for. The default is set to 1000 gene probes.}
 
-\item{Percent}{A positive integer between 0 and 100 indicating the percentage of total gene
-probes to select for from the dataset.}
+\item{Percent}{A positive integer between 0 and 100 indicating the
+percentage of total gene probes to select for from the dataset.}
 
-\item{Poly}{When TRUE, a mean and variance polynomial method is used to determine
-the number of gene probes to select for. This method uses three second order
-polynomials to select for the genes with the most variable mean and
-standard deviations.}
+\item{Poly}{When TRUE, a mean and variance polynomial method is used to
+determine the number of gene probes to select for. This method uses three
+second order polynomials to select for the genes with the most variable
+mean and standard deviations.}
 
 \item{Adaptive}{When TRUE, Gaussian mixture modeling is used
 to determine the number of gene probes to select.}
+
+\item{cutoff}{Positive number between 0 and 1 specifying the false
+discovery rate (FDR) cutoff to use with the Adaptive Gaussian mixture
+modeling method. The default value is set to NULL. However, when Adaptive
+is TRUE, cutoff should be a positive integer between 0 and 1. Common
+values to use are 0.05 or 0.01.}
 }
 \value{
-Returns an object with the  number of gene probes that will be selected in
-the gene feature selection process. If the Adaptive option is chosen,
-Gaussian mixture modeling files containing information about the data's
-mean, variance, mixing proportion, and gaussian assignment are also outputted.
+Returns an object with the  number of gene probes that will be
+selected in the gene feature selection process. If the Adaptive option
+is chosen, Gaussian mixture modeling files containing information about
+the data's mean, variance, mixing proportion, and gaussian assignment
+are also outputted.
 }
 \description{
-Function to determine the number of gene probes to select for in the gene feature
-selection process.
+Function to determine the number of gene probes to select for in the gene
+feature selection process.
 }
 \note{
 When using this function, the user should only use one
 option (Fixed, Percent, Adaptive) at a time. When using one method, all
 other options should be set to NULL.
 
-This function is not needed to determine the number of gene probes to select
-for in the Mean_Variance_Polynomial gene selection method. The particular
-Mean_Variance_Polynomial method does not use a gene probe number input.
+This function is not needed to determine the number of gene probes
+to select for in the Poly gene selection method.
+The particular Poly method does not use a gene probe number input.
 }
 \examples{
 # Example 1: Choosing a fixed gene probe number
 # Load in a test file
-data_file <- system.file("extdata", "GSE2034.normalized.expression.txt", package = "multiClust")
-data <- input_file(input = data_file)
-gene_num <- number_probes(input = data, data.exp = data, Fixed = 300,
-   Percent = NULL, Adaptive = NULL)
+data_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
+    package="multiClust")
+data <- input_file(input=data_file)
+gene_num <- number_probes(input=data_file, data.exp=data, Fixed=300,
+    Percent=NULL, Poly=NULL, Adaptive=NULL, cutoff=NULL)
 
 # Example 2: Choosing 50\% of the total selected gene probes in a dataset
-gene_num <- number_probes(input = data_file, data.exp = data, Fixed = NULL,
-   Percent = 50, Adaptive = NULL)
+gene_num <- number_probes(input=data_file, data.exp=data, Fixed=NULL,
+    Percent=50, Poly=NULL, Adaptive=NULL, cutoff=NULL)
+
+# Example 3: Choosing the Poly method
+gene_num <- number_probes(input=data_file, data.exp=data, Fixed=NULL,
+    Percent=NULL, Poly=TRUE, Adaptive=NULL, cutoff=NULL)
 \dontrun{
-# Example 3: Choosing the Adaptive Gaussian Mixture Modeling method
+# Example 4: Choosing the Adaptive Gaussian Mixture Modeling method
 # Very long computation time, so example will not be run
-gene_num <- number_probes(input = data_file, data.exp = data, Fixed = NULL,
-   Percent = NULL, Adaptive = TRUE)
+gene_num <- number_probes(input=data_file, data.exp=data, Fixed=NULL,
+    Percent=NULL, Poly=NULL, Adaptive=TRUE, cutoff=0.01)
    }
 }
 \author{
