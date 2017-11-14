@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 NEWS File for multiClust
 This file will contain information about updates for multiClust
 
@@ -33,33 +32,3 @@ publication in Cancer Informatics DOI: 10.4137/CIN.S38000.
 -Package version pushed to 1.9.1
 -Fixed package vignette issue with loading heat map image
 -Added new package suggests "imager" to resolve loading above mentioned heat map
-=======
-NEWS File for multiClust
-This file will contain information about updates for multiClust
-
-2-11-16
-
--Packaged changed to version 0.99.4
--Revised the code in the vignette
--Added explanation of using RNA-seq data with package in vignette
--Revised code documentation for probe_ranking function
-
-2-13-16
-
--Package version changed to 0.99.5
--Added option to specify FDR cutoff when using the Adaptive GMM
-method in the number_probes function.
--Updated documentation in the vignette
-
-3-2-16
-
--Package version pushed to 0.99.6
--Added Biobase, GEOquery, and preprocessCore to package suggests
--Minor revisions in the package vignette
-
-6-19-16
-
--Package version pushed to 1.0.3
--Updated package title and abstract to reflect that of 
-publication in Cancer Informatics DOI: 10.4137/CIN.S38000.
->>>>>>> upstream/master
