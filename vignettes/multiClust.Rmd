@@ -681,7 +681,16 @@ Below is an example of a heatmap produced in Java TreeView from the atr,
 gtr, abnd cdt files produced by this function. In this heatmap, rows represent
 genes and columns represent samples.
 
-<img src="http://s7.postimg.org/pymhkbp2j/GSE2034_Breast_SD_Rank_ward_D2_Fixed_Probe_Num_F.png" />
+```{r, eval=TRUE, echo=FALSE, fig.show='hold', fig.width=8, fig.height=8, fig.align='center', warning=FALSE}
+library(imager)
+# retrieve file path for image
+fpath <- system.file("extdata", "GSE2034_Breast.SD_Rank.ward.D2.Fixed_Probe_Num.Fixed_Clust_Num.pdf", package="multiClust")
+# for some reason the pdf file path does not exist, need to rebuild package?
+# add pdf file to package inst/extdata folder, add imager to the package suggests
+im <- load.image(fpath)
+plot(im, axes = F)
+
+```
 
 **Sample Dendrogram Example**
 
