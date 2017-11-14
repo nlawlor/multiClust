@@ -1,13 +1,34 @@
 NEWS File for multiClust
 This file will contain information about updates for multiClust
 
-December 7th, 2015
--Updated DESCRIPTION file to have <80 characters per line
-  -Added new biocViews
--Updated NAMESPACE file
-  -Added IMPORTs to the file 
+2-11-16
 
-December 23rd, 2015
--Added NEWS file
--Added unitTests files to test functions in 'multiClust'
--Added updates to vignette for obtaining GSE datasets from GEO
+-Packaged changed to version 0.99.4
+-Revised the code in the vignette
+-Added explanation of using RNA-seq data with package in vignette
+-Revised code documentation for probe_ranking function
+
+2-13-16
+
+-Package version changed to 0.99.5
+-Added option to specify FDR cutoff when using the Adaptive GMM
+method in the number_probes function.
+-Updated documentation in the vignette
+
+3-2-16
+
+-Package version pushed to 0.99.6
+-Added Biobase, GEOquery, and preprocessCore to package suggests
+-Minor revisions in the package vignette
+
+6-19-16
+
+-Package version pushed to 1.0.3
+-Updated package title and abstract to reflect that of 
+publication in Cancer Informatics DOI: 10.4137/CIN.S38000.
+
+11-14-17
+
+-Package version pushed to 1.8.1
+-Fixed package vignette issue with loading heat map image
+-Added new package suggests "imager" to resolve loading above mentioned heat map
