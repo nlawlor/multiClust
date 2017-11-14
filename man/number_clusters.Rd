@@ -2,42 +2,49 @@
 % Please edit documentation in R/number_clusters.R
 \name{number_clusters}
 \alias{number_clusters}
-\title{Function to determine the number of clusters to be used to cluster gene probes and samples.}
+\title{Function to determine the number of clusters to be used
+to cluster gene probes and samples.}
 \usage{
 number_clusters(data.exp, Fixed = 3, gap_statistic = NULL)
 }
 \arguments{
-\item{data.exp}{The numeric original gene expression matrix to be used for clustering of
-genes and samples. This object is an output of the input_file function.}
+\item{data.exp}{The numeric original gene expression matrix to be used
+for clustering of genes and samples. This object is an output
+of the input_file function.}
 
-\item{Fixed}{A positive integer used to represent the number of clusters the samples
-and probes will be divided into.}
+\item{Fixed}{A positive integer used to represent the number of clusters
+the samples and probes will be divided into. The default cluster number
+is set to 3 clusters.}
 
-\item{gap_statistic}{A logical indicating whether to use the gap_statistic to
-determine the optimal number of clusters to divide samples into.}
+\item{gap_statistic}{A logical indicating whether to use the
+gap_statistic to determine the optimal number of clusters to
+divide samples into.}
 }
 \value{
 An object with the determined number of clusters to use.
 }
 \description{
-Function to determine the number of clusters to be used to cluster gene probes and samples.
+Function to determine the number of clusters to be used
+to cluster gene probes and samples.
 }
 \note{
-The user should only choose either the fixed or gap_statistic option, not both.
-When using the gap_statistic option, change the argument to TRUE and "Fixed" to NULL.
+The user should only choose either the fixed or gap_statistic
+option, not both. When using the gap_statistic option, change the
+argument to TRUE and "Fixed" to NULL.
 }
 \examples{
 
 #Example 1: Using a fixed cluster number
 # Load in a test file
-data_file <- system.file("extdata", "GSE2034.normalized.expression.txt", package = "multiClust")
+data_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
+package="multiClust")
 data <- input_file(data_file)
-clust_num <- number_clusters(data.exp = data, Fixed = 3, gap_statistic = NULL)
+clust_num <- number_clusters(data.exp=data, Fixed=3, gap_statistic=NULL)
 
 \dontrun{
 # Example 2: Using the gap_statistic to determine the optimal cluster number
 # Computation time is somewhat long
-clust_num <- number_clusters(data.exp = data, Fixed = NULL, gap_statistic = TRUE)
+clust_num <- number_clusters(data.exp=data, Fixed=NULL, gap_statistic=TRUE)
  }
 }
 \author{
