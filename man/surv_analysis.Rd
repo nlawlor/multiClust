@@ -2,7 +2,8 @@
 % Please edit documentation in R/surv_analysis.R
 \name{surv_analysis}
 \alias{surv_analysis}
-\title{Function to produce Kaplan-Meier Survival Plots of selected gene expression data.}
+\title{Function to produce Kaplan-Meier Survival Plots of selected gene
+expression data.}
 \usage{
 surv_analysis(samp_cluster, clinical, survival_type = "RFS", data_name,
   cluster_type = "HClust", distance = "euclidean",
@@ -11,76 +12,83 @@ surv_analysis(samp_cluster, clinical, survival_type = "RFS", data_name,
   cluster_num_selection = "Fixed_Clust_Num")
 }
 \arguments{
-\item{samp_cluster}{Object vector containing the samples and the cluster number they belong to.
-This object is an output of the cluster_analysis function.}
+\item{samp_cluster}{Object vector containing the samples and the cluster
+number they belong to. This object is an output of the
+cluster_analysis function.}
 
-\item{clinical}{String indicating the name of the text file containing patient clinical information.
-The file should be a data frame consisting of two columns. The first column contains the
-patient survival time information in months. The second column indicates occurrence of
+\item{clinical}{String indicating the name of the text file containing
+patient clinical information. The file should be a data frame consisting
+of two columns. The first column contains the patient survival time
+information in months. The second column indicates occurrence of
 a censorship (0) or an event (1).}
 
-\item{survival_type}{String specifying the type of survival event being analyzed. Examples include
-"Disease-free survival (DFS)", "Overall Survival (OS)", "Relapse-free survival (RFS)", etc.}
+\item{survival_type}{String specifying the type of survival event being
+analyzed. Examples include "Disease-free survival (DFS)",
+"Overall Survival (OS)", "Relapse-free survival (RFS)", etc.}
 
 \item{data_name}{String indicating the name to be used to label the plot.}
 
-\item{cluster_type}{String indicating the type of clustering method used in the
-cluster_analysis function. "Kmeans" or "HClust" are the two options.}
+\item{cluster_type}{String indicating the type of clustering method
+used in the cluster_analysis function. "Kmeans" or "HClust"
+are the two options.}
 
 \item{distance}{String describing the distance metric uses for HClust in
-the cluster_analysis function. Options include one of "euclidean", "maximum", manhattan",
-"canberra", "binary", or "minkowski".}
+the cluster_analysis function. Options include one of "euclidean",
+"maximum", manhattan", "canberra", "binary", or "minkowski".}
 
-\item{linkage_type}{String describing the linkage metric used in the
-cluster_analysis function. Options include "ward.D2", "average", "complete",
-"median", "centroid", "single", and "mcquitty".}
+\item{linkage_type}{String describing the linkage metric use in the
+cluster_analysis function. Options include "ward.D2", "average",
+"complete", "median", "centroid", "single", and "mcquitty".}
 
-\item{probe_rank}{String indicating the feature selection method used in the
-probe_ranking function. Options include "CV_Rank", "CV_Guided", "SD_Rank",
-and "Poly".}
+\item{probe_rank}{String indicating the feature selection method used
+in the probe_ranking function. Options include "CV_Rank",
+"CV_Guided", "SD_Rank", and "Poly".}
 
-\item{probe_num_selection}{String indicating the way in which probes were selected
-in the number_probes function. Options include "Fixed_Probe_Num",
-"Percent_Probe_Num", and "Adaptive_Probee_Num".}
+\item{probe_num_selection}{String indicating the way in which probes
+were selected in the number_probes function. Options include
+"Fixed_Probe_Num", "Percent_Probe_Num", and "Adaptive_Probee_Num".}
 
-\item{cluster_num_selection}{String indicating how the number of clusters were
-determined in the number_clusters function.Options include "Fixed_Clust_Num"
- and "Gap_Statistic".}
+\item{cluster_num_selection}{String indicating how the number of
+clusters were determined in the number_clusters function. Options
+include "Fixed_Clust_Num" and "Gap_Statistic".}
 }
 \value{
-Produces a pdf image of a Kaplan-Meier Survival Plot with Cox Survival P Value.
-Also returns an object containing the cox survival P value.
+Produces a pdf image of a Kaplan-Meier Survival Plot with Cox
+Survival P Value. Also returns an object containing the
+cox survival P value.
 }
 \description{
-Function to produce Kaplan-Meier Survival Plots of selected gene expression data.
+Function to produce Kaplan-Meier Survival Plots of selected gene
+expression data.
 }
 \examples{
 # Load in a data file
-data_file <- system.file("extdata", "GSE2034.normalized.expression.txt", package = "multiClust")
-data <- input_file(input = data_file)
+data_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
+    package="multiClust")
+data <- input_file(input=data_file)
 # Choose 300 genes to select for
-gene_num <- number_probes(input = data, data.exp = data, Fixed = 300,
-   Percent = NULL, Adaptive = NULL)
+gene_num <- number_probes(input=data_file, data.exp=data, Fixed=300,
+    Percent=NULL, Adaptive=NULL)
 # Choose the "CV_Rank" Method for gene ranking
-sel.data <- probe_ranking(input = data_file, probe_number = 300,
-   probe_num_selection = "Fixed_Probe_Num", data.exp = data, method = "CV_Rank")
+sel.data <- probe_ranking(input=data_file, probe_number=300,
+    probe_num_selection="Fixed_Probe_Num", data.exp=data, method="CV_Rank")
 # Choose a fixed cluster number of 3
-clust_num <- number_clusters(data.exp = data, Fixed = 3, gap_statistic = NULL)
+clust_num <- number_clusters(data.exp=data, Fixed=3, gap_statistic=NULL)
 # Call function for Kmeans parameters
-kmeans_analysis <- cluster_analysis(sel.exp = sel.data, cluster_type = "Kmeans",
-   distance = NULL, linkage_type = NULL, gene_distance = NULL,
-   num_clusters = 3, data_name = "GSE2034 Breast",
-   probe_rank = "CV_Rank", probe_num_selection = "Fixed_Probe_Num",
-   cluster_num_selection = "Fixed_Clust_Num")
+kmeans_analysis <- cluster_analysis(sel.exp=sel.data, cluster_type="Kmeans",
+    distance=NULL, linkage_type=NULL, gene_distance=NULL,
+    num_clusters=3, data_name="GSE2034 Breast",
+    probe_rank="CV_Rank", probe_num_selection="Fixed_Probe_Num",
+    cluster_num_selection="Fixed_Clust_Num")
 # Load the clinical outcome file
-clin_file <- system.file("extdata", "GSE2034-RFS-clinical-outcome.txt", package = "multiClust")
+clin_file <- system.file("extdata", "GSE2034-RFS-clinical-outcome.txt",
+    package="multiClust")
 # Example of Calling surv_analysis function
-surv <- surv_analysis(samp_cluster = kmeans_analysis, clinical = clin_file,
-   survival_type = "RFS", data_name = "GSE2034 Breast", cluster_type = "Kmeans",
-   distance = NULL, linkage_type = NULL, probe_rank = "CV_Rank",
-   probe_num_selection = "Fixed_Probe_Num",
-   cluster_num_selection = "Fixed_Cluster_Num")
-
+surv <- surv_analysis(samp_cluster=kmeans_analysis, clinical=clin_file,
+    survival_type="RFS", data_name="GSE2034 Breast", cluster_type="Kmeans",
+     distance=NULL, linkage_type=NULL, probe_rank="CV_Rank",
+     probe_num_selection="Fixed_Probe_Num",
+     cluster_num_selection="Fixed_Cluster_Num")
 }
 \author{
 Alec Fabbri, Nathan Lawlor
