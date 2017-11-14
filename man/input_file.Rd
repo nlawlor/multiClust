@@ -2,33 +2,36 @@
 % Please edit documentation in R/input_file.R
 \name{input_file}
 \alias{input_file}
-\title{Function to read-in the gene expression file and assign gene probe names as the rownames.}
+\title{Function to read-in the gene expression file and assign gene probe names
+as the rownames.}
 \usage{
 input_file(input)
 }
 \arguments{
-\item{input}{String indicating the name of the text file containing the gene
-expression matrix to be read in. This matrix file should have the gene probes
-in the first column of the matrix. The gene probes will be assigned as
-the rownames of the matrix.}
+\item{input}{String indicating the name of the text file containing the
+gene expression matrix to be read in. This matrix file should have the gene
+probes in the first column of the matrix. The gene probes will be assigned
+as the rownames of the matrix.}
 }
 \value{
 Returns an object containing the gene expression matrix with the
 gene probe names as the rownames.
 }
 \description{
-Function to read-in the gene expression file and assign gene probe names as the rownames.
+Function to read-in the gene expression file and assign gene probe names
+as the rownames.
 }
 \note{
-This function works best when using gene expression datasets from Gene Expression
-Omnibus.
+This function works best when using gene expression datasets from
+Gene Expression Omnibus.
 }
 \examples{
 # Load in a test file
-data_file <- system.file("extdata", "GSE2034.normalized.expression.txt", package = "multiClust")
-data <- input_file(input = data_file)
+data_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
+    package="multiClust")
+data <- input_file(input=data_file)
 # View matrix with gene probes assigned as rownames
-data[1:4,1:4]
+data[1:4, 1:4]
 }
 \author{
 Nathan Lawlor
