@@ -682,10 +682,10 @@ gtr, abnd cdt files produced by this function. In this heatmap, rows represent
 genes and columns represent samples.
 
 ```{r, eval=TRUE, echo=FALSE, fig.show='hold', fig.width=8, fig.height=8, fig.align='center', warning=FALSE}
+suppressPackageStartupMessages(library(imager))
 library(imager)
 # retrieve file path for image
-fpath <- system.file("extdata", "GSE2034_Breast.SD_Rank.ward.D2.Fixed_Probe_Num.Fixed_Clust_Num.pdf", package="multiClust")
-# for some reason the pdf file path does not exist, need to rebuild package?
+fpath <- system.file("extdata", "GSE2034_Breast.SD_Rank.ward.D2.Fixed_Probe_Num.Fixed_Clust_Num.jpg", package="multiClust")
 # add pdf file to package inst/extdata folder, add imager to the package suggests
 im <- load.image(fpath)
 plot(im, axes = F)
@@ -699,6 +699,7 @@ Below is an example of a sample dendrogram outputted by this function:
 ```{r, eval=TRUE, echo=FALSE, fig.show='hold', fig.width=8, fig.height=8, fig.align='center', warning=FALSE}
 # Load necessary libraries
 library(gplots)
+suppressPackageStartupMessages(library(dendextend))
 library(dendextend)
 
 # Produce a sample dendrogram using the selected gene/probe expression object
@@ -1026,7 +1027,7 @@ Steffen Moeller, Marc Schwartz and Bill Venables (2015).
 gplots: Various R Programming Tools for Plotting Data. R package
 version 2.17.0. http://CRAN.R-project.org/package=gplots
 
-7. Therneau T (2015). _A Package for Survival Analysis in S_. version 2.38,
+7. Therneau T (2015). _A Package for Survival Analysis in S. version 2.38,
 <URL: http://CRAN.R-project.org/package=survival>.
 
 8. Maechler, M., Rousseeuw, P., Struyf, A., Hubert, M., Hornik, K.(2015).
