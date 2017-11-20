@@ -50,7 +50,7 @@ License: GPL (>= 2)
 biocViews: FeatureExtraction, Clustering, GeneExpression, Survival
 LazyData: TRUE
 Imports: mclust, ctc, survival, cluster, dendextend, amap, graphics, grDevices
-Suggests: knitr, gplots, RUnit, BiocGenerics, preprocessCore, Biobase, GEOquery, imager
+Suggests: knitr, gplots, RUnit, BiocGenerics, preprocessCore, Biobase, GEOquery
 VignetteBuilder: knitr
 RoxygenNote: 5.0.0
 NeedsCompilation: no
