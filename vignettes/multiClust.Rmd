@@ -682,13 +682,10 @@ gtr, abnd cdt files produced by this function. In this heatmap, rows represent
 genes and columns represent samples.
 
 ```{r, eval=TRUE, echo=FALSE, fig.show='hold', fig.width=8, fig.height=8, fig.align='center', warning=FALSE}
-suppressPackageStartupMessages(library(imager))
-library(imager)
 # retrieve file path for image
-fpath <- system.file("extdata", "GSE2034_Breast.SD_Rank.ward.D2.Fixed_Probe_Num.Fixed_Clust_Num.jpeg", package="multiClust")
+fpath <- system.file("extdata", "GSE2034_Breast.SD_Rank.ward.D2.Fixed_Probe_Num.Fixed_Clust_Num.jpg", package="multiClust")
 # add pdf file to package inst/extdata folder, add imager to the package suggests
-im <- load.image(fpath)
-plot(im, axes = F)
+knitr::include_graphics(path = fpath)
 
 ```
 
