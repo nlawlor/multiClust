@@ -685,7 +685,7 @@ genes and columns represent samples.
 suppressPackageStartupMessages(library(imager))
 library(imager)
 # retrieve file path for image
-fpath <- system.file("extdata", "GSE2034_Breast.SD_Rank.ward.D2.Fixed_Probe_Num.Fixed_Clust_Num.jpg", package="multiClust")
+fpath <- system.file("extdata", "GSE2034_Breast.SD_Rank.ward.D2.Fixed_Probe_Num.Fixed_Clust_Num.jpeg", package="multiClust")
 # add pdf file to package inst/extdata folder, add imager to the package suggests
 im <- load.image(fpath)
 plot(im, axes = F)
