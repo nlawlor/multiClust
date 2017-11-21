@@ -684,13 +684,7 @@ genes and columns represent samples.
 ```{r, eval=TRUE, echo=FALSE, fig.show='hold', fig.width=8, fig.height=8, fig.align='center', warning=FALSE}
 # retrieve file path for image
 fpath <- system.file("extdata", "GSE2034_Breast.SD_Rank.ward.D2.Fixed_Probe_Num.Fixed_Clust_Num.jpg", package="multiClust")
-<<<<<<< HEAD
 knitr::include_graphics(path = fpath)
-=======
-# add pdf file to package inst/extdata folder, add imager to the package suggests
-knitr::include_graphics(path = fpath)
-
->>>>>>> upstream/master
 ```
 
 **Sample Dendrogram Example**
