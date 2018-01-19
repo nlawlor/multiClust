@@ -47,8 +47,7 @@
 #' heatmap images and Java TreeView files for HClust dendrograms.
 #' @seealso \code{\link{probe_ranking}}, \code{\link{number_clusters}},
 #' \code{\link{number_probes}}, \code{\link[stats]{hclust}},
-#' \code{\link[stats]{kmeans}}, \code{\link[amap]{Dist}},
-#' \code{\link[stats]{dist}}
+#' \code{\link[stats]{kmeans}}, \code{\link[stats]{dist}}
 #' @author Nathan Lawlor, Alec Fabbri
 #' @examples
 #'
