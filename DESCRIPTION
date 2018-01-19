@@ -1,7 +1,7 @@
 Package: multiClust
 Type: Package
 Title: multiClust: An R-package for Identifying Biologically Relevant Clusters in Cancer Transcriptome Profiles
-Version: 1.8.2
+Version: 1.9.1
 Date: 2017-11-14
 Authors@R: c(
     person("Nathan","Lawlor", email = "nathan.lawlor03@gmail.com",
