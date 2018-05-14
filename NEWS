@@ -1,33 +1,31 @@
 NEWS File for multiClust
 This file will contain information about updates for multiClust
 
-2-11-16
+Changes in version 1.8.1 (Date: 2017-11-14)
 
--Packaged changed to version 0.99.4
--Revised the code in the vignette
--Added explanation of using RNA-seq data with package in vignette
--Revised code documentation for probe_ranking function
+    * Package version pushed to 1.8.1
+    * Fixed package vignette issue with loading heat map image
 
-2-13-16
+Changes in version 1.0.3 (Date: 2016-6-19)
 
--Package version changed to 0.99.5
--Added option to specify FDR cutoff when using the Adaptive GMM
-method in the number_probes function.
--Updated documentation in the vignette
+    * Package version pushed to 1.0.3
+    * Updated package title and abstract to reflect that of publication in Cancer Informatics DOI: 10.4137/CIN.S38000.
 
-3-2-16
+Changes in version 0.99.6 (Date: 2016-3-2)
 
--Package version pushed to 0.99.6
--Added Biobase, GEOquery, and preprocessCore to package suggests
--Minor revisions in the package vignette
+    * Package version pushed to 0.99.6
+    * Added Biobase, GEOquery, and preprocessCore to package suggests
+    * Minor revisions in the package vignette
 
-6-19-16
+Changes in version 0.99.5 (Date: 2016-2-13)
 
--Package version pushed to 1.0.3
--Updated package title and abstract to reflect that of 
-publication in Cancer Informatics DOI: 10.4137/CIN.S38000.
+    * Package version changed to 0.99.5
+    * Added option to specify FDR cutoff when using the Adaptive GMM method in the number_probes function.
+    * Updated documentation in the vignette
 
-11-14-17
+Changes in vesion 0.99.4 (Date: 2016-2-11)
 
--Package version pushed to 1.8.1
--Fixed package vignette issue with loading heat map image
+    * Packaged changed to version 0.99.4
+    * Revised the code in the vignette
+    * Added explanation of using RNA-seq data with package in vignette
+    * Revised code documentation for probe_ranking function
