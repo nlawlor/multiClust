@@ -1,6 +1,9 @@
 NEWS File for multiClust
 This file will contain information about updates for multiClust
 
+Changes in version 1.11.1 (Date: 2018-5-17)
+    * Updated NEWS file format to reflect changes by version
+
 Changes in version 1.8.1 (Date: 2017-11-14)
 
     * Package version pushed to 1.8.1
