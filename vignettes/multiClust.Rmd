@@ -116,20 +116,28 @@ clinical information from the series matrix text zip file. When using this
 code, be sure that you have a strong internet connection. The GSE
 datasets are very large!
 
-```{r, eval=FALSE}
+```{r, eval=TRUE, message=FALSE}
 # Load GEO and biobase libraries
 library(GEOquery)
 library(Biobase)
 library(multiClust)
-    
+library(preprocessCore)
+library(ctc)
+library(gplots)
+library(dendextend)
+library(graphics)
+library(grDevices)
+library(amap)
+library(survival)
+
 # Obtain GSE series matrix file from GEO website using getGEO function
 gse <- getGEO(GEO="GSE2034")
     
 # Save the gene expression matrix as an object
-data.gse <- exprs(gse)
+data.gse <- exprs(gse[[1]])
     
 # Save the patient clinical data to an object
-pheno <- pData(phenoData(gse))
+pheno <- pData(phenoData(gse[[1]]))
     
 # Write the gene expression and clinical data to text files
 WriteMatrixToFile(tmpMatrix=data.gse, tmpFileName="GSE2034.expression.txt",
@@ -155,19 +163,14 @@ After downloading the GSE series matrix file and moving it to a directory
 the following code can be used.
 
 ```{r, eval=FALSE}
-# Load GEO and biobase libraries
-library(GEOquery)
-library(Biobase)
-library(multiClust)
-    
 # Obtain GSE series matrix file from GEO website using getGEO function
 gse <- getGEO(filename="GSE2034_series_matrix.txt.gz")
 
 # Save the gene expression matrix as an object
-data.gse <- exprs(gse)
+data.gse <- exprs(gse[[1]])
     
 # Save the patient clinical data to an object
-pheno <- pData(phenoData(gse))
+pheno <- pData(phenoData(gse[[1]]))
     
 # Write the gene expression and clinical data to text files
 WriteMatrixToFile(tmpMatrix=data.gse, tmpFileName="GSE2034.expression.txt",
@@ -190,13 +193,6 @@ normalize the data, log2 scale the data, and lastly write the data to
 a text file.
 
 ```{r, eval=FALSE}
-# Load necessary libraries
-library(GEOquery)
-library(Biobase)
-library(preprocessCore)
-library(multiClust)
-  
-    
 # Obtain GSE series matrix file from GEO website using getGEo function
 gse <- getGEO(GEO="GSE2034")
     
@@ -275,9 +271,6 @@ of the gene expression text file to load.
 **Example**
 
 ```{r, eval=TRUE}
-# Load necessary libraries
-library(multiClust)
-
 # Obtain gene expression matrix
 exp_file <- system.file("extdata", "GSE2034.normalized.expression.txt", package= "multiClust")
 
@@ -318,8 +311,6 @@ desired number of genes or probes to select for. The default value of
 
 ```{r, eval=TRUE}
 # Example 1: Choosing a fixed gene or probe number
-# Load necessary libraries
-library(multiClust)
 
 # Obtain gene expression matrix
 exp_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
@@ -341,9 +332,6 @@ and the user specifies:
  
 ```{r, eval=TRUE}
 # Example 2: Choosing 50% of the total selected gene probes in a dataset
-# Load necessary libraries
-library(multiClust)
-
 # Obtain gene expression matrix
 exp_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
     package="multiClust")
@@ -362,9 +350,6 @@ and standard deviation. When the user specifies:
 
 ```{r, eval=TRUE}
 # Example 3: Choosing the polynomial selected gene probes in a dataset
-# Load necessary libraries
-library(multiClust)
-
 # Obtain gene expression matrix
 exp_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
     package="multiClust")
@@ -381,8 +366,6 @@ to select for. When the user specifies:
     
 ```{r, eval=FALSE}
 # Example 4: Choosing the Adaptive Gaussian Mixture Modeling method
-# Load necessary libraries
-library(multiClust)
 
 gene_num <- number_probes(input=exp_file, 
     data.exp=data.exprs, Fixed=NULL,
@@ -452,8 +435,6 @@ this ranking method "probe_num" can be set to NULL.
 Below is an example of how to use the `probe_ranking` function:
 
 ```{r, eval=TRUE}
-# Load necessary libraries
-library(multiClust)
 
 # Obtain gene expression matrix
 exp_file <- system.file("extdata", "GSE2034.normalized.expression.txt",
@@ -516,8 +497,6 @@ Below is an example of how to use the `number_clusters` function with a fixed
 number of clusters:
 
 ```{r, eval=TRUE}
-# Load necessary libraries
-library(multiClust)
 
 # Call the number_clusters function
 # data.exp is the original expression matrix object outputted from
@@ -539,8 +518,6 @@ The `number_clusters` function can be called in a similar way to use the
 gap_statistic option:
 
 ```{r, eval=FALSE}
-# Load necessary libraries
-library(multiClust)
 
 # Call the number_clusters function
 # data.exp is the original expression matrix object ouputted from
@@ -635,18 +612,6 @@ Below is an example of how to use the `cluster_analysis` function using the
 Hierarchical clustering option:
 
 ```{r, eval=TRUE, fig.show='hold', warning=FALSE}
-# Load necessary libraries
-
-suppressPackageStartupMessages(library(ctc))
-suppressPackageStartupMessages(library(gplots))
-suppressPackageStartupMessages(library(dendextend))
-library(ctc)
-library(gplots)
-library(dendextend)
-library(graphics)
-library(grDevices)
-library(amap)
-library(multiClust)
 
 # Call the cluster_analysis function
 hclust_analysis <- cluster_analysis(sel.exp=ranked.exprs,
@@ -692,11 +657,6 @@ knitr::include_graphics(path = fpath)
 Below is an example of a sample dendrogram outputted by this function:
 
 ```{r, eval=TRUE, echo=FALSE, fig.show='hold', fig.width=8, fig.height=8, fig.align='center', warning=FALSE}
-# Load necessary libraries
-library(gplots)
-suppressPackageStartupMessages(library(dendextend))
-library(dendextend)
-
 # Produce a sample dendrogram using the selected gene/probe expression object
 # In the function, cluster_analysis the dendrogram is not displayed in
 # the console. 
@@ -741,8 +701,6 @@ Below is an example of how to use the `cluster_analysis` function using the
 Kmeans clustering option:
 
 ```{r, eval=TRUE}
-# Load necessary libraries
-library(multiClust)
 
 # Call the cluster_analysis function
  kmeans_analysis <- cluster_analysis(sel.exp=ranked.exprs,
@@ -818,8 +776,6 @@ performing Kmeans clustering analysis with the `cluster_analysis` function:
 
 
 ```{r, eval=TRUE}
-# Load necessary libraries
-library(multiClust)
 
 # Call the avg_probe_exp function
 avg_matrix <- avg_probe_exp(sel.exp=ranked.exprs,
@@ -901,13 +857,6 @@ Below is an example of how to use the `surv_analysis` function:
 **Example**
 
 ```{r, eval=TRUE, fig.show='hold'}
-# Load necessary libraries
-library(gplots)
-library(graphics)
-library(grDevices)
-library(multiClust)
-library(survival)
-
 # Obtain clinical outcome file
 clin_file <- system.file("extdata", "GSE2034-RFS-clinical-outcome.txt",
     package="multiClust")
@@ -940,12 +889,6 @@ example of what the plots would look like.
 **Kaplan-Meier Survival Plot**
 
 ```{r, eval=TRUE, echo=FALSE, fig.show='hold', fig.width=8, fig.height=8, fig.align='center', warning=FALSE}
-# Load necessary libraries
-library(gplots)
-library(graphics)
-library(grDevices)
-library(multiClust)
-library(survival)
 
 # Obtain clinical outcome file
 clin_file <- system.file("extdata", "GSE2034-RFS-clinical-outcome.txt",

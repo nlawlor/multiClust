@@ -1,6 +1,9 @@
 NEWS File for multiClust
 This file will contain information about updates for multiClust
 
+Changes in version 1.11.2 (Date: 2018-5-25)
+    * Updated vignette Rmd file to address bug in getGEO to obtain expression data
+
 Changes in version 1.11.1 (Date: 2018-5-17)
     * Updated NEWS file format to reflect changes by version
 
