@@ -129,7 +129,9 @@ library(graphics)
 library(grDevices)
 library(amap)
 library(survival)
+```
 
+```{r, eval=FALSE, message=FALSE}
 # Obtain GSE series matrix file from GEO website using getGEO function
 gse <- getGEO(GEO="GSE2034")
     
