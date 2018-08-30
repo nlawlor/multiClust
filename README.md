@@ -6,7 +6,8 @@ __Installation:__
 
 To install this package, start R and enter:
 
-`source("https://bioconductor.org/biocLite.R")`
+`if (!requireNamespace("BiocManager", quietly=TRUE))`
+    `install.packages("BiocManager")`
 
 `biocLite("multiClust")`
 
