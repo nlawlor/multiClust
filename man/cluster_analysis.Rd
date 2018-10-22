@@ -111,7 +111,7 @@ Nathan Lawlor, Alec Fabbri
 \seealso{
 \code{\link{probe_ranking}}, \code{\link{number_clusters}},
 \code{\link{number_probes}}, \code{\link[stats]{hclust}},
-\code{\link[stats]{kmeans}}, \code{\link[amap]{Dist}},
+\code{\link[stats]{kmeans}},
 \code{\link[stats]{dist}}
 }
 
